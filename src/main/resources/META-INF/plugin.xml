@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>com.github.yqy7.myfavaction</id>
+    <name>My Favorite Actions</name>
+    <vendor email="qiyun.yqy@gmail.com" url="https://github.com/yqy7">yqy7</vendor>
+
+    <description><![CDATA[
+        Developing this plugin is beacuse I'm always confused between windows and mac about the short key。
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.github.yqy7.myfavaction.MyFavActionService"/>
+        <toolWindow id="MyFavActionToolWindow" factoryClass="com.github.yqy7.myfavaction.MyFavActionToolWindowFactory"
+                    anchor="right"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="showMyFavActions" class="com.github.yqy7.myfavaction.ShowMyFavAction"
+                text="Show My Favorite Actions">
+            <keyboard-shortcut first-keystroke="control QUOTE" keymap="$default"/>
+        </action>
+    </actions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.github.yqy7.myfavaction.MyApplicationComponent</implementation-class>
+        </component>
+    </application-components>
+</idea-plugin>
